@@ -11,7 +11,11 @@ namespace Task2
         static void Main(string[] args)
         {
             Computer comp1 = new Computer(12345, "Asus", 999);
-            Console.WriteLine("erster Computer: " + comp1.SerNo + " " + comp1.Manufacturer + " " + comp1.getPrice());
+            Console.WriteLine(comp1.printStatus());
+            Console.WriteLine("Preis vird verändert...");
+            comp1.Price = 1999;
+            Console.WriteLine("Preis wurde verändert.");
+            Console.WriteLine(comp1.printStatus());
 
 
         }
