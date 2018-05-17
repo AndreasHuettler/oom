@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
-    class Computer
+    class Computer : InformationsInterface
     {
 
         public Computer(int value_serNo, string value_manufacturer, decimal value_price)
@@ -19,30 +19,27 @@ namespace Task2
                 }
 
 
-
-
         private int SerNo;
-
 
         public string printStatus()
         {
             return "Seriennummer: " + SerNo + " Hersteller: " + Manufacturer + " Preis: " + Price;
         }
         
-         
         public string Manufacturer
         {
             get; set;
         }
-
-        
 
         public decimal Price
         {
             get; set;
         }
 
-        
+        public string Beschreibung()
+        {
+            return " Ich bin ein Computer";
+        }
     }
 }
 
