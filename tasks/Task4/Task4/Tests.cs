@@ -35,10 +35,10 @@ namespace Task4
             var tv = new TV("Toshiba", 8999);
             var tv1 = new TV("Hersteller2", 998);
 
-            Assert.IsTrue(tv.Manufacturer == "Toshiba");
+            Assert.IsTrue(tv.Manufacturer == "Manufacturer");
             Assert.NotZero(tv.Price);
 
-            Assert.IsTrue(tv1.Manufacturer == "Hersteller2");
+            Assert.IsTrue(tv1.Manufacturer == "Herstelelr2");
             Assert.NotZero(tv1.Price);
         }
 
