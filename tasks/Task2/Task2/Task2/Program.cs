@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,6 +47,47 @@ namespace Task4
                             Console.WriteLine(i.Beschreibung());
                         }
 
+            //Array von Computern wird erstellt
+            var CompArray = new Computer[]
+            {
+                new Computer(11, "HP", 2333),
+                new Computer(2, "Acer", 1098),
+                new Computer(3, "Asus", 1399),
+                new Computer(4, "Fujitsu", 1299),
+            };
+
+
+
+            string jsonstring = JsonConvert.SerializeObject(CompArray);
+            Console.WriteLine(jsonstring);
+            Directory.CreateDirectory(@"c:\temp\json");
+            File.WriteAllText(@"c:\temp\json\jsonfile.json", jsonstring);
+
+
+            string readJson = File.ReadAllText(@"c:\temp\json\jsonfile.json");
+            Console.WriteLine();
+            Console.WriteLine(readJson);
+            Console.WriteLine();
+           List<Computer> readFromDiskContainer = JsonConvert.DeserializeObject<List<Computer>>(readJson);
+
+
+
+            //InformationsInterface[] readFromDiskContainer = JsonConvert.DeserializeObject<InformationsInterface[]>(zielPfad);
+
+           
+
+            
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("eingelesene Daten:");
+            Console.WriteLine();
+            Console.WriteLine();
+            foreach (var j in readFromDiskContainer)
+            {
+                
+                Console.WriteLine(j.printStatus());
+            }
+            
 
         }
     }

@@ -4,22 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task2
+namespace Task4
 {
     class Computer : InformationsInterface
     {
 
-        public Computer(int value_serNo, string value_manufacturer, decimal value_price)
+        public Computer(int SerNo, string Manufacturer, decimal Price)
                 {
-                    if (string.IsNullOrWhiteSpace(value_manufacturer)) throw new ArgumentException("Manufacturer must not be empty.");
-            Manufacturer = value_manufacturer;
-            SerNo = value_serNo; 
-            Price = value_price;
+                    if (string.IsNullOrWhiteSpace(Manufacturer)) throw new ArgumentException("Manufacturer must not be empty.");
+            this.Manufacturer = Manufacturer;
+            this.SerNo = SerNo;
+            this.Price = Price;
 
                 }
 
 
-        private int SerNo;
+        public int SerNo
+        {
+            get; set;
+        }
 
         public string printStatus()
         {
