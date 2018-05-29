@@ -68,13 +68,8 @@ namespace Task4
             Console.WriteLine();
             Console.WriteLine(readJson);
             Console.WriteLine();
-           List<Computer> readFromDiskContainer = JsonConvert.DeserializeObject<List<Computer>>(readJson);
 
-
-
-            //InformationsInterface[] readFromDiskContainer = JsonConvert.DeserializeObject<InformationsInterface[]>(zielPfad);
-
-           
+           List<Computer> readFromDiskContainer = JsonConvert.DeserializeObject<List<Computer>>(readJson);      
 
             
             Console.WriteLine();
