@@ -43,9 +43,12 @@ namespace Task4
 
 
             foreach (var i in geraete)
-                        {
-                            Console.WriteLine(i.Beschreibung());
-                        }
+            {
+                Console.WriteLine(i.Beschreibung());
+            }
+
+
+            /*
 
             //Array von Computern wird erstellt
             var CompArray = new Computer[]
@@ -82,7 +85,35 @@ namespace Task4
                 
                 Console.WriteLine(j.printStatus());
             }
-            
+
+
+
+            */
+
+            Console.WriteLine();
+            Console.WriteLine("Neu: ");
+            Console.WriteLine();
+
+            var settings = new JsonSerializerSettings() { Formatting = Formatting.Indented, TypeNameHandling = TypeNameHandling.Auto };
+            string jsonstringNeu = JsonConvert.SerializeObject(geraete, settings);
+            Console.WriteLine(jsonstringNeu);
+            Directory.CreateDirectory(@"c:\temp\json");
+            File.WriteAllText(@"c:\temp\json\jsonfileNew.json", jsonstringNeu);
+
+            string readJsonNew = File.ReadAllText(@"c:\temp\json\jsonfileNew.json");
+            var readFromDiskContainerNeu = JsonConvert.DeserializeObject<InformationsInterface[]>(readJsonNew, settings);
+
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("eingelesene Daten:");
+            Console.WriteLine();
+            Console.WriteLine();
+            foreach (var j in readFromDiskContainerNeu)
+            {
+
+                Console.WriteLine(j.Beschreibung());
+            }
 
         }
     }
