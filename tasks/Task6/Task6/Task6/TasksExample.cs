@@ -13,62 +13,37 @@ namespace Task6
         {
             var random = new Random();
 
-            var xs = new[] { 1, 2, 3, 4, 5, 6, 7, 8 };
-            var tasks = new List<Task<int>>();
+            int eingabe = 0;
 
-            foreach (var x in xs)
+            Console.WriteLine("Gib eine grosse Zahl ein: ");
+            var stringeingabe = Console.ReadLine();
+            if (int.TryParse(stringeingabe, out eingabe))
             {
-                var task = Task.Run(() =>
+                while (eingabe != 0)
                 {
-                    Console.WriteLine($"[T] computing result for {x}");
-                    Task.Delay(TimeSpan.FromSeconds(5.0 + random.Next(10))).Wait();
-                    Console.WriteLine($"[T] done computing result for {x}");
-                    return x * x;
-                });
-
-                tasks.Add(task);
-            }
-
-            Console.WriteLine("doing something else ...");
-
-            var tasks2 = new List<Task<int>>();
-            foreach (var task in tasks)
-            {
-                tasks2.Add(
-                    task.ContinueWith(t => { Console.WriteLine($"[C] result is {t.Result}"); return t.Result; })
-                );
-            }
-
-            var cts = new System.Threading.CancellationTokenSource();
-            var primeTask = ComputePrimes(cts.Token);
-
-            Console.ReadLine();
-            cts.Cancel();
-            Console.WriteLine("canceled ComputePrimes");
-
-            Console.ReadLine();
-        }
-
-        public static Task<bool> IsPrime(int x, CancellationToken ct)
-        {
-            return Task.Run(() =>
-            {
-                for (var i = 2; i < x - 1; i++)
-                {
-                    ct.ThrowIfCancellationRequested();
-                    if (x % i == 0) return false;
+                    var task = Task.Run(() =>
+                    {
+                        Console.WriteLine("Calculating...");
+                        Task.Delay(TimeSpan.FromSeconds(5.0 + random.Next(7))).Wait();
+                        Console.WriteLine("... Calculation done");
+                    });
+                    Thread.Sleep(1000);
+                    eingabe--;
+                    Console.WriteLine(eingabe);
                 }
-                return true;
-            }, ct);
-        }
-
-        public static async Task ComputePrimes(CancellationToken ct)
-        {
-            for (var i = 100000000; i < int.MaxValue; i++)
-            {
-                ct.ThrowIfCancellationRequested();
-                if (await IsPrime(i, ct)) Console.WriteLine($"[P] prime number: {i}");
+                var cts = new System.Threading.CancellationTokenSource();
             }
+            
+
         }
+        public static async Task<bool> divideByTwo(int eingabe, CancellationToken ct)
+            {
+
+             if((eingabe % 2) == 0)
+             {
+                ct.ThrowIfCancellationRequested();
+                if
+             }
+            }
     }
 }

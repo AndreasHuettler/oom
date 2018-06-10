@@ -18,9 +18,9 @@ namespace Task6
         {
             //PushWithSubjectExample.run();
 
-            //TasksExample.Run();   
+            TasksExample.Run();   
 
-            PushExample.Run();
+            //PushExample.Run();
         }
 
     }
