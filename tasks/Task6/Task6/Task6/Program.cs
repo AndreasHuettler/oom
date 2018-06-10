@@ -16,9 +16,9 @@ namespace Task6
     {
         static void Main(string[] args)
         {
-            PushWithSubjectExample.run();
+            //PushWithSubjectExample.run();
 
-
+            TasksExample.Run();
         }
 
     }
